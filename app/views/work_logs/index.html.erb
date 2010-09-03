@@ -1,0 +1,38 @@
+<h1>Time Log</h1>
+
+<p>The following is a list of work done by the members of SpatialLogic.
+  The information gathered from this page will be used when submitting weekly
+  time logs to Professor Buckley on Wednesdays.</p>
+
+<p>  
+<%= link_to 'Add Hours', new_work_log_path %>
+</p>
+
+<h2>Recent Hours (showing latest 10 entries)</h2>
+<table>
+  <tr>
+    <th>Work Date</th>
+    <th>Person</th>
+    <th>Hours</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @work_logs.each do |w| %>
+  <tr>
+    <td><%= w.worked_on.to_s(:long) %></td>
+    <td><%= w.person.name %></td>
+    <td><%= w.hours %></td>
+    <td><%= w.work_type.name %></td>
+    <td><%= link_to 'Show', w %></td>
+    <td><%= link_to 'Edit', edit_work_log_path(w) %></td>
+    <td><%= link_to 'Destroy', w, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

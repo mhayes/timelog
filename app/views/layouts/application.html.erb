@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Timelog</title>
-  <%= stylesheet_link_tag :all %>
+  <title>Timelog - Spatial Logic</title>
+  <%= stylesheet_link_tag :flutie, "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/flick/jquery-ui.css", "grid", "application" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<%= yield %>
+<div class="row">
+  <div class="column grid_12"><%= yield %></div>
+</div>
 
 </body>
 </html>

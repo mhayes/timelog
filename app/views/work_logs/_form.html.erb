@@ -1,0 +1,10 @@
+<%= semantic_form_for @work_log do |work| %>
+  <%= work.inputs do %>
+    <%= work.input :person %>
+    <%= work.input :worked_on, :as => :string, :input_html => { :class => "datefield" } %>
+    <%= work.input :hours %>
+    <%= work.input :work_type %>
+  <% end %>
+  
+  <%= work.buttons %>
+<% end %>

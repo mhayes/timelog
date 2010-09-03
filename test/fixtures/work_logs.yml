@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  person: 
+  worktype: 
+  hours: 1.5
+  worked_on: 2010-09-02
+  summary: MyString
+
+two:
+  person: 
+  worktype: 
+  hours: 1.5
+  worked_on: 2010-09-02
+  summary: MyString
