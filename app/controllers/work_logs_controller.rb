@@ -38,39 +38,20 @@ class WorkLogsController < ApplicationController
     end
   end
 
-  # GET /work_logs/1/edit
-  def edit
-    @work_log = WorkLog.find(params[:id])
-  end
-
   # POST /work_logs
   # POST /work_logs.xml
   def create
     @work_log = WorkLog.new(params[:work_log])
-
-    respond_to do |format|
-      if @work_log.save
-        format.html { redirect_to(@work_log, :notice => 'Work log was successfully created.') }
-        format.xml  { render :xml => @work_log, :status => :created, :location => @work_log }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @work_log.errors, :status => :unprocessable_entity }
+    
+    
+    if @work_log.save
+      flash[:notice] = "Work entry was created successfully."
+      respond_with(@work_log, :status => :created, :location => @work_log) do |format|
+        format.html { redirect_to work_logs_path }
       end
-    end
-  end
-
-  # PUT /work_logs/1
-  # PUT /work_logs/1.xml
-  def update
-    @work_log = WorkLog.find(params[:id])
-
-    respond_to do |format|
-      if @work_log.update_attributes(params[:work_log])
-        format.html { redirect_to(@work_log, :notice => 'Work log was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @work_log.errors, :status => :unprocessable_entity }
+    else
+      respond_with(@work_log.errors, :status => :unprocessable_entity) do |format|
+        format.html { render :action => :new }
       end
     end
   end

@@ -15,8 +15,7 @@
     <th>Person</th>
     <th>Hours</th>
     <th>Category</th>
-    <th></th>
-    <th></th>
+    <th>Summary (if available)</th>
     <th></th>
   </tr>
 
@@ -26,8 +25,7 @@
     <td><%= w.person.name %></td>
     <td><%= w.hours %></td>
     <td><%= w.work_type.name %></td>
-    <td><%= link_to 'Show', w %></td>
-    <td><%= link_to 'Edit', edit_work_log_path(w) %></td>
+    <td><%= w.summary %></td>
     <td><%= link_to 'Destroy', w, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

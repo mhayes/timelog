@@ -1,7 +1,7 @@
 Timelog::Application.routes.draw do
   root :to => 'work_logs#index'
   
-  resources :work_logs
+  resources :work_logs, :only => [:index, :new, :create, :destroy]
   
   match "report/:start_date/:end_date" => "work_logs#report",
     :constraints => { 
