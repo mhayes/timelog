@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Week #</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+  <% start_dates.each_index do |i| %>
+  <tr>
+    <td><%= link_to "Week #{i+1}", report_path(start_dates[i], (start_dates[i].to_date + 7.days).to_s("yy-mm-dd")) %></td>
+    <td><%= start_dates[i].to_date.to_s(:long) %></td>
+    <td><%= (start_dates[i].to_date + 7.days).to_s(:long) %></td>
+  </tr>
+  <% end %>
+</table>

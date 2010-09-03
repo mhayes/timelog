@@ -1,0 +1,30 @@
+<h2>Time Log Report</h2>
+
+<p><%= link_to 'Go Back', work_logs_path %></p>
+
+<dl>
+  <dt>Start Date</dt>
+  <dd><%= params[:start_date] %></dd>
+  <dt>End Date</dt>
+  <dd><%= params[:end_date] %></dd>
+</dl>
+
+<h3>Details</h3>
+<p>There were <strong><%= @work_logs.count %> time entries</strong> during this time period.</p>
+
+<table>
+  <tr>
+    <th>Person</th>
+    <% @work_types.each do |wt| %>
+      <th><%= wt.name %></th>
+    <% end %>
+  </tr>
+<% @people.each do |p| %>
+  <tr>
+    <td><%= p.name %></td>
+    <% @work_types.each do |wt| %>
+    <td><%= @work_logs.where("work_type_id = ? AND person_id = ?", wt, p).sum("hours") %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
