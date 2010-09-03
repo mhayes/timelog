@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Person</th>
+    <% work_types.each do |wt| %>
+      <th><%= wt.name %></th>
+    <% end %>
+  </tr>
+<% people.each do |p| %>
+  <tr>
+    <td><%= p.name %></td>
+    <% work_types.each do |wt| %>
+    <td><%= work_logs.where("work_type_id = ? AND person_id = ?", wt, p).sum("hours") %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>

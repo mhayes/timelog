@@ -2,12 +2,7 @@
 
 <p><%= link_to 'Go Back', work_logs_path %></p>
 
-<dl>
-  <dt>Start Date</dt>
-  <dd><%= params[:start_date] %></dd>
-  <dt>End Date</dt>
-  <dd><%= params[:end_date] %></dd>
-</dl>
+<p>This is a cumulative time log report for all activity between 2010-09-01 and 2010-12-15.</p>
 
 <h3>Details</h3>
 <p>There were <strong><%= @work_logs.count %> time entries</strong> during this time period.</p>
