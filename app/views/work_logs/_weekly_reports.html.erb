@@ -9,7 +9,8 @@
 		<tr>
 	    <td>
 				<%= link_to "Week #{i+1}", 
-				report_path(start_dates[i], (start_dates[i].to_date + 6.days).to_s("yy-mm-dd")) %>
+				report_path(start_dates[i], (start_dates[i].to_date + 6.days).to_s("yy-mm-dd"))
+				%>
 			</td>
 	    <td><%= start_dates[i].to_date.to_s(:long) %></td>
 	    <td><%= (start_dates[i].to_date + 6.days).to_s(:long) %></td>

@@ -1,15 +1,11 @@
-<h2>Time Log Report</h2>
+<div class="column grid_12">
+  <h1>Time Log Report</h1>
+  <p>Date Range: <%= params[:start_date] %> to <%= params[:end_date] %></p>
 
-<p><%= link_to 'Go Back', work_logs_path %></p>
+  <p><%= link_to '← Back', work_logs_path %></p>
 
-<dl>
-  <dt>Start Date</dt>
-  <dd><%= params[:start_date] %></dd>
-  <dt>End Date</dt>
-  <dd><%= params[:end_date] %></dd>
-</dl>
-
-<h3>Details</h3>
-<p>There were <strong><%= @work_logs.count %> time entries</strong> during this time period.</p>
+  <h2>Details</h2>
+  <p>There were <strong><%= @work_logs.count %> time entries</strong> during this time period.</p>
 
 <%= render :partial => "work_breakdown", :locals => {:people => @people, :work_logs => @work_logs, :work_types => @work_types} %>
+</div>

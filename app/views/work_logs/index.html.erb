@@ -1,44 +1,40 @@
-<h1>Time Log</h1>
+<div class="column grid_7">
+  <h1>Time tracker.</h1>
+  <p>All SpatialLogic team members should submit their hours here.</p>
+  
+  <h2>The latest hours</h2>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Person</th>
+      <th>Hours</th>
+      <th>Category</th>
+      <th>Summary (if available)</th>
+      <th></th>
+    </tr>
 
-<p>The following is a list of work done by the members of SpatialLogic.
-  The information gathered from this page will be used when submitting weekly
-  time logs to Professor Buckley on Wednesdays.</p>
+  <% @work_logs.each do |w| %>
+    <tr>
+      <td><%= w.worked_on.strftime("%m/%d") %></td>
+      <td><%= w.person.name %></td>
+      <td><%= w.hours %></td>
+      <td><%= w.work_type.name %></td>
+      <td><%= w.summary %></td>
+      <td><%= link_to 'delete', w, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+  
+  <h2>Weekly reports</h2>
+  <%= render 'weekly_reports', :start_dates => @start_dates %>
+  
+  <h2>Cumulative report</h2>
+  <p>View <%= link_to 'all reported work', all_reports_path %> during the Fall 2010 semester.</p>
+  
+  
+</div>
 
-
-<div class="notice">To submit hours that you worked click the button below.</div>
-<p><%= link_to 'Add Hours', new_work_log_path %></p>
-
-<h2>Recent Hours (showing latest 10 entries)</h2>
-<table>
-  <tr>
-    <th>Work Date</th>
-    <th>Person</th>
-    <th>Hours</th>
-    <th>Category</th>
-    <th>Summary (if available)</th>
-    <th></th>
-  </tr>
-
-<% @work_logs.each do |w| %>
-  <tr>
-    <td><%= w.worked_on.to_s(:long) %></td>
-    <td><%= w.person.name %></td>
-    <td><%= w.hours %></td>
-    <td><%= w.work_type.name %></td>
-    <td><%= w.summary %></td>
-    <td><%= link_to 'Destroy', w, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<h2>Cumulative Report</h2>
-<div class="notice">This report shows all the hours collected during the <strong>Fall 2010 semester</strong>.</div>
-<p><%= link_to 'View Report', all_reports_path %></p>
-
-<h2>Weekly Reports</h2>
-<div class="notice">Click on the <strong>Week #</strong> to generate a report.  All weekly reports that occur in the future are hidden until the start of the reporting week.</div>
-
-<%= render 'weekly_reports', :start_dates => @start_dates %>
-
-
-
+<div class="column grid_5">
+  <h1>Submit hours.</h1>
+  <%= render 'form' %>
+</div>

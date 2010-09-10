@@ -4,16 +4,13 @@ class WorkLogsController < ApplicationController
   # GET /work_logs
   # GET /work_logs.xml
   def index
+    @work_log = WorkLog.new
+    
     @start_dates = ["2010-09-01","2010-09-08","2010-09-15","2010-09-22","2010-09-29",
       "2010-10-06","2010-10-13","2010-10-20","2010-10-27","2010-11-03","2010-11-10",
       "2010-11-17","2010-11-24", "2010-12-01","2010-12-08"]
     
-    @work_logs = WorkLog.order("updated_at DESC").limit(10)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @work_logs }
-    end
+    @work_logs = WorkLog.order("updated_at DESC").limit(5)
   end
 
   # GET /work_logs/1

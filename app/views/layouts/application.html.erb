@@ -3,13 +3,13 @@
 <head>
   <title>Timelog - Spatial Logic</title>
   <%= stylesheet_link_tag :flutie, "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/flick/jquery-ui.css", "grid", "application" %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :defaults, "cufon-yui", "rockwell.font" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
 <div class="row">
-  <div class="column grid_12"><%= yield %></div>
+  <%= yield %>
 </div>
 
 </body>
