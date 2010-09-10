@@ -29,8 +29,7 @@
   <%= render 'weekly_reports', :start_dates => @start_dates %>
   
   <h2>Cumulative report</h2>
-  <p>View <%= link_to 'all reported work', all_reports_path %> during the Fall 2010 semester.</p>
-  
+  <p>View <%= link_to "all reported work", report_path('2010-09-01','2010-12-15') %> during the Fall 2010 semester.</p>
   
 </div>
 

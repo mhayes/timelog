@@ -70,10 +70,4 @@ class WorkLogsController < ApplicationController
     @work_types = WorkType.all
     @work_logs = WorkLog.where("worked_on >= ? AND worked_on <= ?", params[:start_date], params[:end_date])
   end
-  
-  def all_report
-    @people = Person.all
-    @work_types = WorkType.all
-    @work_logs = WorkLog.order("worked_on >= ? AND <= ?", "2010-09-01", "2010-12-15")
-  end
 end
