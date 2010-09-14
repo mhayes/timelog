@@ -7,5 +7,26 @@
   <h2>Details</h2>
   <p>There were <strong><%= @work_logs.count %> time entries</strong> during this time period.</p>
 
-<%= render :partial => "work_breakdown", :locals => {:people => @people, :work_logs => @work_logs, :work_types => @work_types} %>
+	<%= render :partial => "work_breakdown", :locals => {:people => @people, :work_logs => @work_logs, :work_types => @work_types} %>
+	
+	<h2>Time entries</h2>
+	<p>The following <strong><%= @work_logs.count %> time entries</strong> were used to calculate the totals above.</p>
+	<table>
+		<tr>
+			<th>Date</th>
+			<th>Person</th>
+			<th>Hours</th>
+			<th>Category</th>
+			<th>Summary</th>
+		</tr>
+		<% @work_logs.each do |w| %>
+	    <tr>
+	      <td><%= w.worked_on.strftime("%m/%d") %></td>
+	      <td><%= w.person.name.split(" ").first %></td>
+	      <td><%= w.hours %></td>
+	      <td><%= w.work_type.name %></td>
+	      <td><%= w.summary %></td>
+	    </tr>
+	  <% end %>
+	</table>
 </div>
