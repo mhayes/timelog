@@ -10,7 +10,7 @@ class WorkLogsController < ApplicationController
       "2010-10-06","2010-10-13","2010-10-20","2010-10-27","2010-11-03","2010-11-10",
       "2010-11-17","2010-11-24", "2010-12-01","2010-12-08"]
     
-    @work_logs = WorkLog.order("worked_on DESC").where("worked_on > ?", 1.week.ago)
+    @work_logs = WorkLog.order("worked_on DESC, updated_at DESC").where("worked_on > ?", 1.week.ago)
   end
 
   # GET /work_logs/1
@@ -68,6 +68,6 @@ class WorkLogsController < ApplicationController
   def report
     @people = Person.all
     @work_types = WorkType.all
-    @work_logs = WorkLog.where("worked_on >= ? AND worked_on <= ?", params[:start_date], params[:end_date]).order("worked_on DESC")
+    @work_logs = WorkLog.where("worked_on >= ? AND worked_on <= ?", params[:start_date], params[:end_date]).order("worked_on DESC, updated_at DESC")
   end
 end
