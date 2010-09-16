@@ -10,28 +10,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100903051354) do
+ActiveRecord::Schema.define(:version => 20100916025106) do
 
   create_table "people", :force => true do |t|
-    t.string   "name"
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+  end
+
+  create_table "person_work_logs", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "work_log_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "work_logs", :force => true do |t|
-    t.integer  "person_id"
-    t.integer  "work_type_id"
-    t.float    "hours"
-    t.date     "worked_on"
-    t.string   "summary"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "person_id"
+    t.integer   "work_type_id"
+    t.float     "hours"
+    t.date      "worked_on"
+    t.string    "summary"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "work_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
 end

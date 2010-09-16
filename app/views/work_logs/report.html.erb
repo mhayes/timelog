@@ -22,7 +22,7 @@
 		<% @work_logs.each do |w| %>
 	    <tr>
 	      <td><%= w.worked_on.strftime("%m/%d") %></td>
-	      <td><%= w.person.name.split(" ").first %></td>
+	      <td><% w.people.each do |p| %><%= p.name.split(" ").first %><br /><% end %></td>
 	      <td><%= w.hours %></td>
 	      <td><%= w.work_type.name %></td>
 	      <td><%= w.summary %></td>

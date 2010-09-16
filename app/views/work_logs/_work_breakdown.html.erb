@@ -5,12 +5,12 @@
       <th><%= wt.name %></th>
     <% end %>
   </tr>
-<% people.each do |p| %>
-  <tr>
-    <td><%= p.name %></td>
-    <% work_types.each do |wt| %>
-    <td><%= work_logs.where("work_type_id = ? AND person_id = ?", wt, p).sum("hours") %></td>
-    <% end %>
-  </tr>
-<% end %>
+  <% people.each do |p| %>
+    <tr>
+      <td><%= p.name %></td>
+      <% work_types.each do |wt| %>
+      <td><%= work_logs.joins(:person_work_logs).where("person_work_logs.person_id = ? AND work_type_id = ?", p, wt).sum("hours") %></td>      
+      <% end %>
+    </tr>
+  <% end %>
 </table>
