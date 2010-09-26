@@ -3,7 +3,7 @@
     <%= work.input :people, :as => :check_boxes, :label => "Who did the work?" %>
     <%= work.input :worked_on, :as => :string, :label => "When did the work occur?", :hint => "The day the work occurred on, used for reporting purposes.", :input_html => { :class => "datefield" } %>
     <%= work.input :hours, :label => "How long did this person work for?", :hint => "Recorded as hours rounded to nearest 15 minutes." %>
-    <%= work.input :work_type, :label => "What kind of work was this?", :hint => "The category." %>
+    <%= work.input :work_type, :label => "What kind of work was this?", :hint => "The category.", :collection => WorkType.all.select { |wt| wt.subfeatures.empty? } %>
     <%= work.input :summary, :hint => "Optional.", :label => "Additional notes go here" %>
   <% end %>
   

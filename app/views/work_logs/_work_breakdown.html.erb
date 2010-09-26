@@ -9,7 +9,11 @@
     <tr>
       <td><%= p.name %></td>
       <% work_types.each do |wt| %>
-      <td><%= work_logs.joins(:person_work_logs).where("person_work_logs.person_id = ? AND work_type_id = ?", p, wt).sum("hours") %></td>      
+				<% if wt.subfeatures.empty? %>
+	      	<td><%= work_logs.joins(:person_work_logs).where("person_work_logs.person_id = ? AND work_type_id = ?", p, wt).sum("hours") %></td>
+				<% else %>
+					<td><%= work_logs.joins(:person_work_logs).where("person_work_logs.person_id = ? AND work_type_id IN (?)", p, wt.subfeatures).sum("hours") %></td>
+				<% end %>
       <% end %>
     </tr>
   <% end %>
